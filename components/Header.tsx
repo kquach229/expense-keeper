@@ -1,0 +1,24 @@
+import React from 'react';
+import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
+import { checkUser } from '@/lib/checkUtils';
+const Header = async () => {
+  const user = await checkUser();
+  console.log(user);
+  return (
+    <nav className='navbar'>
+      <div className='navbar-container'>
+        <h2>Expense Keeper</h2>
+        <div>
+          <SignedOut>
+            <SignInButton />
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+export default Header;
